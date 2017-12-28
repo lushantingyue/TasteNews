@@ -43,26 +43,32 @@ public class LoadActivity extends AppCompatActivity {
                 .build();
         Bmob.initialize(config);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                /*
-                Intent intent = new Intent(LoadActivity.this,MainActivity.class);
-                LoadActivity.this.startActivity(intent);
-                LoadActivity.this.finish();
-                */
-                UserBean bmobUser = UserBean.getCurrentUser(LoadActivity.this,UserBean.class);
-                if(bmobUser != null){
-                    Intent intent = new Intent(LoadActivity.this,MainActivity.class);
-                    LoadActivity.this.startActivity(intent);
-                    LoadActivity.this.finish();
-                }else{
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.frame_content,new GuideFragment()).commit();
-                }
+//        没有账号, 强制跳过
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                /*
+//                Intent intent = new Intent(LoadActivity.this,MainActivity.class);
+//                LoadActivity.this.startActivity(intent);
+//                LoadActivity.this.finish();
+//                */
+//                UserBean bmobUser = UserBean.getCurrentUser(LoadActivity.this,UserBean.class);
+//                if(bmobUser != null){
+//                    Intent intent = new Intent(LoadActivity.this,MainActivity.class);
+//                    LoadActivity.this.startActivity(intent);
+//                    LoadActivity.this.finish();
+//                }else{
+//                    getSupportFragmentManager().beginTransaction()
+//                            .replace(R.id.frame_content,new GuideFragment()).commit();
+//                }
+//
+//
+//            }
+//        },LOADING_TIME);
 
 
-            }
-        },LOADING_TIME);
+        Intent intent = new Intent(LoadActivity.this,MainActivity.class);
+        LoadActivity.this.startActivity(intent);
+        LoadActivity.this.finish();
     }
 }
